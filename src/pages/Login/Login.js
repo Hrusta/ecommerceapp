@@ -62,7 +62,7 @@ const Login = () => {
           </button>
         </div>
         <p>
-          <Link to="/register">Sign up here</Link>
+          <Link to="/ecommerceapp/register">Sign up here</Link>
         </p>
       </form>
     </div>

@@ -63,7 +63,7 @@ const Register = () => {
           </button>
         </div>
         <p>
-          <Link to="/login">Login here</Link>
+          <Link to="/ecommerceapp/login">Login here</Link>
         </p>
       </form>
     </div>
