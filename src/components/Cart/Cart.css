@@ -1,0 +1,36 @@
+.cart-button {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+  
+  .cart-icon {
+    margin-right: 5px;
+  }
+  
+  .item-count {
+    color: #fff;
+    padding: 0px;
+    margin-left: 5px;
+    font-size: 14px;
+  }
+  .cart{
+    position:absolute;
+  top: -1px;
+  right:50px;
+  
+  }
+
+  @media (max-width: 1008px) {
+    .cart {
+      top: 8px;
+      right:100px;
+      
+    }
+  }
+  
