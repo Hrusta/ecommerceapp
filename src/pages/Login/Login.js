@@ -22,7 +22,7 @@ const Login = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         console.log(userCredential);
-        navigate("/ecommerceapp");
+        navigate("/");
       })
       .catch((error) => {
         console.log(error);
@@ -62,7 +62,7 @@ const Login = () => {
           </button>
         </div>
         <p>
-          <Link to="/ecommerceapp/register">Sign up here</Link>
+          <Link to="/register">Sign up here</Link>
         </p>
       </form>
     </div>

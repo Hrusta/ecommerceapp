@@ -1,20 +1,26 @@
 import React from "react";
-import { Navbar, Nav } from "react-bootstrap";
+import { Navbar, Nav, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import { Link, useNavigate } from "react-router-dom";
 const NavBar = () => {
   return (
     <div style={{ paddingLeft: "10px" }}>
       <Navbar expand="lg">
-        <Navbar.Brand href="/ecommerceapp">Store</Navbar.Brand>
-        <Navbar.Toggle aria-controls="navbarNav" />
+        <Link to="/">
+          <button>Store</button>
+        </Link>
+
         <Navbar.Collapse id="navbarNav">
           <Nav className="mr-auto">
-            <Nav.Link href="/ecommerceapp/" active>
-              Home
-            </Nav.Link>
-            <Nav.Link href="/ecommerceapp/login">Log in</Nav.Link>
-            <Nav.Link href="/ecommerceapp/register">Register</Nav.Link>
+            <Link to="/">
+              <button>Home</button>
+            </Link>
+            <Link to="/login">
+              <button>Log in</button>
+            </Link>
+            <Link to="/register">
+              <button>Register</button>
+            </Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

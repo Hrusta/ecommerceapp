@@ -22,7 +22,7 @@ const Register = () => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         console.log(userCredential);
-        navigate("/ecommerceapp");
+        navigate("/");
       })
       .catch((error) => {
         console.log(error);
@@ -63,7 +63,7 @@ const Register = () => {
           </button>
         </div>
         <p>
-          <Link to="/ecommerceapp/login">Login here</Link>
+          <Link to="/login">Login here</Link>
         </p>
       </form>
     </div>

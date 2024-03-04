@@ -13,11 +13,11 @@ function App() {
       <NavBar />
       <AuthContextProvider>
         {" "}
-        {/*  */}
+        {/* Wrap your app with ShoppingCartProvider */}
         <Routes>
-          <Route path="/ecommerceapp/" element={<Home />} />
-          <Route path="/ecommerceapp/login" element={<Login />} />
-          <Route path="/ecommerceapp/register" element={<Register />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
       </AuthContextProvider>
     </div>
