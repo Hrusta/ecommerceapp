@@ -78,63 +78,63 @@ const Home = () => {
   };
 
   const handleOrderClick = async () => {
-    if (!currentUser.email) {
-      setOrderStatus("You need to log in");
-      return;
-    }
+    if (currentUser) {
+      console.log(currentUser);
+      const uniqueProducts = getUniqueProducts();
+      const total = uniqueProducts.reduce(
+        (acc, product) => acc + product.price * product.count,
+        0
+      );
 
-    const uniqueProducts = getUniqueProducts();
-    const total = uniqueProducts.reduce(
-      (acc, product) => acc + product.price * product.count,
-      0
-    );
+      const orderId = uuidv4();
 
-    const orderId = uuidv4();
+      const order = {
+        orderId: orderId,
+        user: currentUser.email,
+        products: uniqueProducts.map((product) => ({
+          id: product.id || "",
+          title: product.title,
+          price: product.price,
+          count: product.count,
+        })),
+        total: total,
+        timestamp: new Date().toISOString(),
+      };
 
-    const order = {
-      orderId: orderId,
-      user: currentUser.email,
-      products: uniqueProducts.map((product) => ({
-        id: product.id || "",
-        title: product.title,
-        price: product.price,
-        count: product.count,
-      })),
-      total: total,
-      timestamp: new Date().toISOString(),
-    };
+      console.log("Order to be sent:", order);
 
-    console.log("Order to be sent:", order);
+      const apiEndpoint =
+        "https://ecommerceapp-7ff10-default-rtdb.europe-west1.firebasedatabase.app/Orders.json";
 
-    const apiEndpoint =
-      "https://ecommerceapp-7ff10-default-rtdb.europe-west1.firebasedatabase.app/Orders.json";
+      try {
+        const response = await fetch(apiEndpoint, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(order),
+        });
 
-    try {
-      const response = await fetch(apiEndpoint, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(order),
-      });
+        if (!response.ok) {
+          throw new Error("Failed to send order to the API");
+          setOrderStatus("Failed to send order!");
+        } else {
+          setOrderStatus("Order sent successfully!");
+          setAddedProducts([]);
+        }
 
-      if (!response.ok) {
-        throw new Error("Failed to send order to the API");
+        const db = getDatabase();
+        const ordersRef = ref(db, "Orders");
+
+        await set(child(ordersRef, orderId), order);
+
+        console.log("Order sent successfully to both API and Firebase!");
+      } catch (error) {
+        console.error("Error sending order:", error);
         setOrderStatus("Failed to send order!");
-      } else {
-        setOrderStatus("Order sent successfully!");
-        setAddedProducts([]);
       }
-
-      const db = getDatabase();
-      const ordersRef = ref(db, "Orders");
-
-      await set(child(ordersRef, orderId), order);
-
-      console.log("Order sent successfully to both API and Firebase!");
-    } catch (error) {
-      console.error("Error sending order:", error);
-      setOrderStatus("Failed to send order!");
+    } else {
+      setOrderStatus("You need to log in");
     }
   };
 
