@@ -78,6 +78,11 @@ const Home = () => {
   };
 
   const handleOrderClick = async () => {
+    if (!currentUser.email) {
+      setOrderStatus("You need to log in");
+      return;
+    }
+
     const uniqueProducts = getUniqueProducts();
     const total = uniqueProducts.reduce(
       (acc, product) => acc + product.price * product.count,

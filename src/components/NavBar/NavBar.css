@@ -1,0 +1,15 @@
+/* Styles for a borderless button */
+.borderless-button {
+    display: inline-block;
+    padding: 10px 15px;
+    font-size: 16px;
+    color: black; /* Text color */
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  
+  

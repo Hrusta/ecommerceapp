@@ -21,7 +21,7 @@
   }
   .cart{
     position:absolute;
-  top: -1px;
+  top: 6px;
   right:50px;
   
   }
@@ -30,6 +30,13 @@
     .cart {
       top: 8px;
       right:100px;
+      
+    }
+  }
+
+  @media (max-width: 630px) {
+    .cart {
+      right:15px;
       
     }
   }
