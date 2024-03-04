@@ -15,9 +15,9 @@ function App() {
         {" "}
         {/*  */}
         <Routes>
-          <Route path="ecommerceapp/" element={<Home />} />
-          <Route path="ecommerceapp/login" element={<Login />} />
-          <Route path="ecommerceapp/register" element={<Register />} />
+          <Route path="/ecommerceapp/" element={<Home />} />
+          <Route path="/ecommerceapp/login" element={<Login />} />
+          <Route path="/ecommerceapp/register" element={<Register />} />
         </Routes>
       </AuthContextProvider>
     </div>

@@ -22,7 +22,7 @@ const Register = () => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         console.log(userCredential);
-        navigate("/");
+        navigate("/ecommerceapp");
       })
       .catch((error) => {
         console.log(error);
